@@ -1,0 +1,70 @@
+version: "3"
+
+services:
+  system:
+    image: nix-experiment-linux:0.1.0
+    volumes:
+      - nix-experiment-bin-data-volume:/bin
+      ## Sould be be built into the image
+      #- nix-experiment-boot-data-volume:/boot
+      ## Device files that persist that include tmpfs.
+      #- nix-experiment-dev-data-volume:/dev
+      - nix-experiment-etc-data-volume:/etc
+      - nix-experiment-home-data-volume:/home
+      - ./:/home/nix-experiment-linux
+      - nix-experiment-lib-data-volume:/lib
+      - nix-experiment-lib64-data-volume:/lib64
+      ## Processs mount and are listed here
+      #- nix-experiment-mnt-data-volume:/mnt
+      - nix-experiment-opt-data-volume:/opt
+      - nix-experiment-root-data-volume:/root
+      ## tmpfs stored in RAM not drive
+      #- nix-experiment-run-data-volume:/run
+      - nix-experiment-sbin-data-volume:/sbin
+      - nix-experiment-srv-data-volume:/srv
+      ## CANNOT USE DOCKER EXEC WITH /sys MOUNTED.
+      #- nix-experiment-sys-data-volume:/sys
+      #- nix-experiment-tmp-data-volume:/tmp
+      - nix-experiment-usr-data-volume:/usr
+      ## Cached data: okay to mount.
+      - nix-experiment-var-data-volume:/var
+      - nix-experiment-nix-data-volume:/var
+    tty: true
+
+volumes:
+ nix-experiment-bin-data-volume:
+   external: true
+# nix-experiment-boot-data-volume:
+#   external: true
+# nix-experiment-dev-data-volume:
+#   external: true
+ nix-experiment-etc-data-volume:
+   external: true
+ nix-experiment-home-data-volume:
+   external: true
+ nix-experiment-lib-data-volume:
+   external: true
+ nix-experiment-lib64-data-volume:
+   external: true
+# nix-experiment-mnt-data-volume:
+#   external: true
+ nix-experiment-opt-data-volume:
+   external: true
+ nix-experiment-root-data-volume:
+   external: true
+## nix-experiment-run-data-volume:
+##   external: true
+ nix-experiment-sbin-data-volume:
+   external: true
+ nix-experiment-srv-data-volume:
+   external: true
+#   nix-experiment-sys-data-volume:
+#   external: true
+# nix-experiment-tmp-data-volume:
+#   external: true
+ nix-experiment-usr-data-volume:
+   external: true
+ nix-experiment-var-data-volume:
+  external: true
+ nix-experiment-nix-data-volume:
+  external: true
