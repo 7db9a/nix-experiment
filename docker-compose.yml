@@ -2,7 +2,7 @@ version: "3"
 
 services:
   system:
-    image: nix-experiment-linux:0.1.0
+    image: nix-experiment:0.1.0
     volumes:
       - nix-experiment-bin-data-volume:/bin
       ## Sould be be built into the image
