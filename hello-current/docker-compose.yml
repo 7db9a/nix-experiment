@@ -1,0 +1,70 @@
+version: "3"
+
+services:
+  system:
+    image: nix-experiment:0.1.0
+    volumes:
+      - nix-hello-current-bin-data-volume:/bin
+      ## Sould be be built into the image
+      #- nix-hello-current-boot-data-volume:/boot
+      ## Device files that persist that include tmpfs.
+      #- nix-hello-current-dev-data-volume:/dev
+      - nix-hello-current-etc-data-volume:/etc
+      - nix-hello-current-home-data-volume:/home
+      - ./:/home/nix-experiment/hello-current
+      - nix-hello-current-lib-data-volume:/lib
+      - nix-hello-current-lib64-data-volume:/lib64
+      ## Processs mount and are listed here
+      #- nix-hello-current-mnt-data-volume:/mnt
+      - nix-hello-current-opt-data-volume:/opt
+      - nix-hello-current-root-data-volume:/root
+      ## tmpfs stored in RAM not drive
+      #- nix-hello-current-run-data-volume:/run
+      - nix-hello-current-sbin-data-volume:/sbin
+      - nix-hello-current-srv-data-volume:/srv
+      ## CANNOT USE DOCKER EXEC WITH /sys MOUNTED.
+      #- nix-hello-current-sys-data-volume:/sys
+      #- nix-hello-current-tmp-data-volume:/tmp
+      - nix-hello-current-usr-data-volume:/usr
+      ## Cached data: okay to mount.
+      - nix-hello-current-var-data-volume:/var
+      - nix-hello-current-nix-data-volume:/var
+    tty: true
+
+volumes:
+ nix-hello-current-bin-data-volume:
+   external: true
+# nix-hello-current-boot-data-volume:
+#   external: true
+# nix-hello-current-dev-data-volume:
+#   external: true
+ nix-hello-current-etc-data-volume:
+   external: true
+ nix-hello-current-home-data-volume:
+   external: true
+ nix-hello-current-lib-data-volume:
+   external: true
+ nix-hello-current-lib64-data-volume:
+   external: true
+# nix-hello-current-mnt-data-volume:
+#   external: true
+ nix-hello-current-opt-data-volume:
+   external: true
+ nix-hello-current-root-data-volume:
+   external: true
+## nix-hello-current-run-data-volume:
+##   external: true
+ nix-hello-current-sbin-data-volume:
+   external: true
+ nix-hello-current-srv-data-volume:
+   external: true
+#   nix-hello-current-sys-data-volume:
+#   external: true
+# nix-hello-current-tmp-data-volume:
+#   external: true
+ nix-hello-current-usr-data-volume:
+   external: true
+ nix-hello-current-var-data-volume:
+  external: true
+ nix-hello-current-nix-data-volume:
+  external: true

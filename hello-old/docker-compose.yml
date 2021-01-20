@@ -1,0 +1,70 @@
+version: "3"
+
+services:
+  system:
+    image: nix-experiment:0.1.0
+    volumes:
+      - nix-hello-old-bin-data-volume:/bin
+      ## Sould be be built into the image
+      #- nix-hello-old-boot-data-volume:/boot
+      ## Device files that persist that include tmpfs.
+      #- nix-hello-old-dev-data-volume:/dev
+      - nix-hello-old-etc-data-volume:/etc
+      - nix-hello-old-home-data-volume:/home
+      - ./:/home/nix-experiment/hello-old
+      - nix-hello-old-lib-data-volume:/lib
+      - nix-hello-old-lib64-data-volume:/lib64
+      ## Processs mount and are listed here
+      #- nix-hello-old-mnt-data-volume:/mnt
+      - nix-hello-old-opt-data-volume:/opt
+      - nix-hello-old-root-data-volume:/root
+      ## tmpfs stored in RAM not drive
+      #- nix-hello-old-run-data-volume:/run
+      - nix-hello-old-sbin-data-volume:/sbin
+      - nix-hello-old-srv-data-volume:/srv
+      ## CANNOT USE DOCKER EXEC WITH /sys MOUNTED.
+      #- nix-hello-old-sys-data-volume:/sys
+      #- nix-hello-old-tmp-data-volume:/tmp
+      - nix-hello-old-usr-data-volume:/usr
+      ## Cached data: okay to mount.
+      - nix-hello-old-var-data-volume:/var
+      - nix-hello-old-nix-data-volume:/var
+    tty: true
+
+volumes:
+ nix-hello-old-bin-data-volume:
+   external: true
+# nix-hello-old-boot-data-volume:
+#   external: true
+# nix-hello-old-dev-data-volume:
+#   external: true
+ nix-hello-old-etc-data-volume:
+   external: true
+ nix-hello-old-home-data-volume:
+   external: true
+ nix-hello-old-lib-data-volume:
+   external: true
+ nix-hello-old-lib64-data-volume:
+   external: true
+# nix-hello-old-mnt-data-volume:
+#   external: true
+ nix-hello-old-opt-data-volume:
+   external: true
+ nix-hello-old-root-data-volume:
+   external: true
+## nix-hello-old-run-data-volume:
+##   external: true
+ nix-hello-old-sbin-data-volume:
+   external: true
+ nix-hello-old-srv-data-volume:
+   external: true
+#   nix-hello-old-sys-data-volume:
+#   external: true
+# nix-hello-old-tmp-data-volume:
+#   external: true
+ nix-hello-old-usr-data-volume:
+   external: true
+ nix-hello-old-var-data-volume:
+  external: true
+ nix-hello-old-nix-data-volume:
+  external: true
