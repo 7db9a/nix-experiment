@@ -61,12 +61,3 @@ Find commits that were probably neovim version upgrades. Logs are pippedd go gre
 `git log --pretty=oneline pkgs/applications/editors/neovim/default.nix | grep -E 'neovim.*\->|\->.*neovim'`
 
 `git rev-list master -- pkgs/applications/editors/neovim/default.nix | xargs -I{} git grep -E '^\s+version\s?=\s?"[^"]+"\s*;\s*$' {} -- pkgs/applications/editors/neovim/default.nix`
-
-
-### Old
-
-
-### Current (2.10)
-
-`nix-env -iv neovim`
-
